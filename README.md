@@ -15,16 +15,16 @@ https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuec
 
 ## Installation
 
-### Docker
-if running from docker:
-
-1. install [docker](https://www.docker.com/)
-
-2. download this repository
+1. download this repository
 ```sh
 git clone https://github.com/machinaeXphilip/teachable-machine-image-nodejs-starter image-classifier;
 cd image-classifier
 ```
+
+### Docker
+if running from docker:
+
+2. install [docker](https://www.docker.com/) if not already installed
 
 3. build docker image
 ```sh
@@ -38,8 +38,19 @@ docker run -it -p 8888:80 $USER/image-classifier .
 
 ### native
 
-1. install [nodejs](https://nodejs.org/)
-2. 
+2. install [nodejs](https://nodejs.org/) if not already installed
+
+3. install dependencies:
+```sh
+npm install
+``` 
+
+1. if there are issues on npm install, it is likely to be caused by node-canvas. It's [git repository](https://github.com/Automattic/node-canvas#installation) contains information on how to build it from source
+
+2. run it on the port of your liking
+```sh
+node app.js # prepend 'PORT=<whateveryouwant>' if you don't want it to run on port 80 
+```
 
 ## Setup
 
@@ -52,7 +63,7 @@ images can be predicted from a url or (faster) from image files. If you use imag
 1. train your model on https://teachablemachine.withgoogle.com, download it and place it inside of `/model`
 2. start the service on your machine
 ```sh
-node app.js # will start on port 80 by Default; if you want another port: prepend  'PORT=4444' 
+node app.js 
 ```
 3. send a HTTP POST request to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
 ```sh

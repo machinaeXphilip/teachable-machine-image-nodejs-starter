@@ -13,6 +13,12 @@ and emulate the HTML DOM and document and canvas elements within node which her 
 https://github.com/tr7zw/teachablemachine-node-example. traumverloren's starter code i found in this issue: 
 https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuecomment-612620670
 
+## Setup
+
+the trained model files (should be three) belongs into `/model`
+
+images can be predicted from a url or (faster) from image files. If you use image files, place them into `/images` which will be interpreted as the default image root directory when you specify "img" within the HTTP POST body (see Usage) without http or https.
+
 ## Usage
 
 1. train your model on https://teachablemachine.withgoogle.com, download it and place it inside of `/model`

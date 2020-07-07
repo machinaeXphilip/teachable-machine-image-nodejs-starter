@@ -13,6 +13,34 @@ and emulate the HTML DOM and document and canvas elements within node which her 
 https://github.com/tr7zw/teachablemachine-node-example. traumverloren's starter code i found in this issue: 
 https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuecomment-612620670
 
+## Installation
+
+### Docker
+if running from docker:
+
+1. install [docker](https://www.docker.com/)
+
+2. download this repository
+```sh
+git clone https://github.com/machinaeXphilip/teachable-machine-image-nodejs-starter image-classifier;
+cd image-classifier
+```
+
+3. build docker image
+```sh
+docker build -t $USER/image-classifier .
+```
+
+4. run docker image (here on port 8888 but you could also replace it with whatever port you like)
+```sh
+docker run -it -p 8888:80 $USER/image-classifier .
+```
+
+### native
+
+1. install [nodejs](https://nodejs.org/)
+2. 
+
 ## Setup
 
 the trained model files (should be three) belongs into `/model`
@@ -57,8 +85,7 @@ you should get a response like this:
 
 ```
 ---------
-# Basic Starter README
-
+original projects README:
 # Teachable Machine image prediction in Node.js & Tensorflow.js
 
 Basic starter setup for getting an image classification model trained on [Teachable Machine](https://teachablemachine.withgoogle.com/train) to classify an image in Node.js with Tensorflow.js.

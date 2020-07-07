@@ -21,9 +21,9 @@ node app.js # will start on port 80 by Default; if you want another port: prepen
 ```
 2. send a HTTP POST request to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
 ```sh
-curl --location --request POST 'http://localhost/predict' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request POST 'http://localhost/predict' \
+-H 'Content-Type: application/json' \
+-d '{
     "img":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Rotring_Rapidograph_0.35_mm_Technical_Pen.svg/638px-Rotring_Rapidograph_0.35_mm_Technical_Pen.svg.png"
 }'
 ```

@@ -18,20 +18,28 @@ const tf = require('@tensorflow/tfjs-node');
 const path = require('path');
 const { loadImage } = require('canvas');
 const predict = require('./predict');
+const express = require('express');
 
 // PUT YOUR MODEL.JSON, METADATA.JSON & WEIGHTS.BIN in the Model folder!
 const DEFAULT_MODEL_LOCATION = `file:///${__dirname}/model/model.json`;
 
+//const imagepath = path.resolve(__dirname, './cup.jpg'); // example from filesystem
+const imagepath = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Rotring_Rapidograph_0.35_mm_Technical_Pen.svg/638px-Rotring_Rapidograph_0.35_mm_Technical_Pen.svg.png";// example from weburl
+
 let model;
+
+async function init(){
+  // Load the trained Teachable Machine model
+  model = await tf.loadLayersModel(DEFAULT_MODEL_LOCATION);
+  // model.summary();
+}
+
 
 (async function main() {
   try {
+    await init();
     // Load your image
-    const image = await loadImage(path.resolve(__dirname, './cup.jpg'));
-
-    // Load the trained Teachable Machine model
-    model = await tf.loadLayersModel(DEFAULT_MODEL_LOCATION);
-    // model.summary();
+    const image = await loadImage(imagepath);
 
     // Get the predictions for an image
     const results = await predict(image, model);

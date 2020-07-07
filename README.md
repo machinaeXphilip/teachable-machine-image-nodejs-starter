@@ -3,7 +3,7 @@
 micro service to predict the content of a picture
 using models trained with https://teachablemachine.withgoogle.com/
 
-will be used in the interactive telegram theater performance by https://www.machinaex.com
+planned to be used in an interactive telegram theater performance by https://www.machinaex.com
 
 build from the starter code from https://github.com/traumverloren/teachable-machine-image-nodejs-starter 
 a boilerplate/starter that does not require to edit the teachablemachine lib :rocket

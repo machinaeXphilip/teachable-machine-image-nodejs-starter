@@ -19,7 +19,7 @@ https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuec
 ```sh
 node app.js # will start on port 80 by Default; if you want another port: prepend  'PORT=4444' 
 ```
-2. send a POST to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
+2. send a HTTP POST request to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
 ```sh
 curl --location --request POST 'http://localhost/predict' \
 --header 'Content-Type: application/json' \

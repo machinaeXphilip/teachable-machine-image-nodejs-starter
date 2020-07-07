@@ -13,6 +13,42 @@ and emulate the HTML DOM and document and canvas elements within node which her 
 https://github.com/tr7zw/teachablemachine-node-example. traumverloren's starter code i found in this issue: 
 https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuecomment-612620670
 
+## Usage
+
+1. start the service on your machine
+```sh
+node app.js
+```
+2. send a POST to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
+```sh
+curl --location --request POST 'http://localhost/predict' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "img":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Rotring_Rapidograph_0.35_mm_Technical_Pen.svg/638px-Rotring_Rapidograph_0.35_mm_Technical_Pen.svg.png"
+}'
+```
+
+you should get a response like this:
+
+```JSON
+{
+    "prediction": [
+        {
+            "className": "pen",
+            "probability": 0.9879598617553711
+        },
+        {
+            "className": "hand",
+            "probability": 0.00863911584019661
+        },
+        {
+            "className": "headphones",
+            "probability": 0.0024565309286117554
+        }
+    ]
+}
+
+```
 ---------
 # Basic Starter README
 

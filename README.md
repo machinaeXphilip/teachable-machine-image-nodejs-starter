@@ -17,7 +17,7 @@ https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuec
 
 1. start the service on your machine
 ```sh
-node app.js
+node app.js # will start on port 80 by Default; if you want another port: prepend  'PORT=4444' 
 ```
 2. send a POST to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
 ```sh

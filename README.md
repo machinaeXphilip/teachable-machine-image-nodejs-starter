@@ -1,4 +1,4 @@
-# Teachablemachine image predition microservice in Nodejs / Express & Tensorflow.js
+# Teachablemachine image predition microservice
 
 micro service to predict the content of a picture
 using models trained with https://teachablemachine.withgoogle.com/

@@ -15,11 +15,12 @@ https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuec
 
 ## Usage
 
-1. start the service on your machine
+1. train your model on https://teachablemachine.withgoogle.com, download it and place it inside of `/model`
+2. start the service on your machine
 ```sh
 node app.js # will start on port 80 by Default; if you want another port: prepend  'PORT=4444' 
 ```
-2. send a HTTP POST request to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
+3. send a HTTP POST request to endpoint `/PREDICT`, including a JSON with the url or local relative path to the image to be predicted:
 ```sh
 curl --request POST 'http://localhost/predict' \
     -H 'Content-Type: application/json' \

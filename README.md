@@ -70,9 +70,13 @@ node app.js
 curl --request POST 'http://localhost/predict' \
     -H 'Content-Type: application/json' \
     -d '{
-    "img":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Rotring_Rapidograph_0.35_mm_Technical_Pen.svg/638px-Rotring_Rapidograph_0.35_mm_Technical_Pen.svg.png"
+    "img":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Rotring_Rapidograph_0.35_mm_Technical_Pen.svg/638px-Rotring_Rapidograph_0.35_mm_Technical_Pen.svg.png",
+    "model":"testmodel"
     }'
+    
 ```
+`"img"` is required (must be a hyperlink or a relative path to the picture from inside the images folder)
+`"model"` is optional if you want to change the model to a self-trained one (those have to be registered in the code inside of the models object). This repository delivers a testmodel called "testmodel". If no modelname is provided or the modelname cant be found, the system defaults to mobilenetv1
 
 you should get a response like this:
 

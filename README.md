@@ -13,7 +13,7 @@ and emulate the HTML DOM and document and canvas elements within node which her 
 https://github.com/tr7zw/teachablemachine-node-example. traumverloren's starter code i found in this issue: 
 https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuecomment-612620670
 
-## Installation
+## ✨Installation
 
 1. download this repository
 ```sh

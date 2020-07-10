@@ -10,6 +10,20 @@ const camera = new Camera(canvas);
 const metadata = require('./model/metadata.json');
 const labels = metadata.labels;
 
+async function predictMobileNet(image, model) {
+  
+  //console.log("image as coming in:",image, image.height);
+  
+  const canvas = createCanvas(image.width,image.height);
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(image, 0, 0,image.width,image.height);
+
+  const classes = model.classify(canvas);
+
+  return classes;
+}
+
+
 async function predict(image, model) {
   // model is expecting 224x224 image
   ctx.drawImage(image, 0, 0, 224, 224);
@@ -71,4 +85,6 @@ async function getTopKClasses(labels, logits, topK = 3) {
   });
 }
 
-module.exports = predict;
+//module.exports = predict;
+module.exports.predict = predict;
+module.exports.predictMobileNet = predictMobileNet;

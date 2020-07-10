@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/traumverloren/teachable-machine-image-nodejs-starter#readme",
   "dependencies": {
+    "@tensorflow-models/mobilenet": "^2.0.4",
+    "@tensorflow/tfjs-converter": "^2.0.1",
+    "@tensorflow/tfjs-core": "^2.0.1",
     "@tensorflow/tfjs-node": "^1.7.2",
     "body-parser": "^1.19.0",
     "canvas": "2.6.0",

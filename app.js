@@ -15,9 +15,11 @@ https://github.com/googlecreativelab/teachablemachine-community/issues/33#issuec
 */
 
 const tf = require('@tensorflow/tfjs-node');
+const mobilenet = require('@tensorflow-models/mobilenet');
 const path = require('path');
 const { loadImage } = require('canvas');
-const predict = require('./predict');
+const predict = require('./predict').predict;
+const predictMobileNet = require('./predict').predictMobileNet;
 
 const express = require("express");
 const app = express();
@@ -36,25 +38,46 @@ const DEFAULT_IMAGE_DIR = `../plaiframe/public/files/`;
 //const imagepath = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Rotring_Rapidograph_0.35_mm_Technical_Pen.svg/638px-Rotring_Rapidograph_0.35_mm_Technical_Pen.svg.png";// example from weburl
 
 let model;
+let models = {}
 
 async function init() {
   // Load the trained Teachable Machine model
-  model = await tf.loadLayersModel(DEFAULT_MODEL_LOCATION);
+  //myTestModel = await tf.loadLayersModel(DEFAULT_MODEL_LOCATION);
+  //modelMobileNet = await mobilenet.load();
+  
+  models = {
+    testmodel: await tf.loadLayersModel(DEFAULT_MODEL_LOCATION),
+    mobilenet: await mobilenet.load(),
+  }
   // model.summary();
 }
 
-async function predictFromPath(path) {
-   // Load your image
-   const image = await loadImage(path);
+async function predictFromPath(path,modelname) {
+  // Load your image
+  const image = await loadImage(path);
 
-   // Get the predictions for an image
-   const results = await predict(image, model);
+  let results;
+  // Get the predictions for an image
+  let modelToUse = models[modelname];
+  console.log("modelToUse",modelToUse);
+  //results = await predict(image, model);
+  if (modelname == "mobilenet" || modelToUse == undefined)
+  {
+    modelToUse = models.mobilenet;
+    results = await predictMobileNet(image, modelToUse);
+  }
+  else
+  {
+    results = await predict(image, modelToUse);
+  }
+  
+  
 
-   // Get the top result's name
-   const topResult = results[0].className;
-   console.log('Prediction:', topResult);
-   console.log('Predictions:', results);
-   return results
+  // Get the top result's name
+  const topResult = results[0].className;
+  console.log('Prediction:', topResult);
+  console.log('Predictions:', results);
+  return results
 }
 
 ///// EXPRESS HTTP WEBSERVER
@@ -70,10 +93,9 @@ app.post("/predict", async (req, res) => {
   }
 
   console.log(imgpath);
-  
-  
 
-  predictFromPath(imgpath)
+  
+   predictFromPath(imgpath, req.body.model)
     .then((imageClassification) => {
       res.status(200).send({
         prediction: imageClassification,
@@ -85,6 +107,8 @@ app.post("/predict", async (req, res) => {
         .status(500)
         .send("Something went wrong while fetching image from path.");
     });
+  
+
 });
 
 

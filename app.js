@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 
 // PUT YOUR MODEL.JSON, METADATA.JSON & WEIGHTS.BIN in the Model folder!
 const DEFAULT_MODEL_LOCATION = `file:///${__dirname}/model/model.json`;
-const DEFAULT_IMAGE_DIR = `images/`;
+const DEFAULT_IMAGE_DIR = `../plaiframe/public/files/`;
 
 //const imagepath = path.resolve(__dirname, './pen.png'); // example from filesystem
 //const imagepath = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Rotring_Rapidograph_0.35_mm_Technical_Pen.svg/638px-Rotring_Rapidograph_0.35_mm_Technical_Pen.svg.png";// example from weburl
